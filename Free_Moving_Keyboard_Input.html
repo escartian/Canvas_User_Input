@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+</style>
+
+<canvas id="myCanvas" width="500" height="500" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+var width=500;
+var height=500;
+var playerR=5;
+var playerX= Math.floor((Math.random()*width)+1);
+var playerY= Math.floor((Math.random()*height)+1);
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+ctx.beginPath();
+ctx.arc(playerX,playerY,playerR,0,2*Math.PI);
+ctx.stroke();
+ctx.fillStyle="blue";
+ctx.fill();
+
+function render() {
+  	ctx.clearRect(0, 0, width, height);
+	ctx.beginPath();
+	ctx.arc(playerX,playerY,playerR,0,2*Math.PI);
+	ctx.stroke();
+	ctx.fillStyle="blue";
+	ctx.fill();
+}
+
+var keyboardPressMap = {};
+document.onblur = function(){
+	keyboardPressMap = {};
+}
+document.onkeyup = function(e){
+    e = e || window.event;
+	keyboardPressMap[e.keyCode]=false;
+}
+document.onkeydown = function (e) {
+    e = e || window.event;
+	keyboardPressMap[e.keyCode]=true;
+	
+	
+    if (keyboardPressMap[38]) {
+        // up arrow
+		playerY--;
+
+    }
+    if (keyboardPressMap[40]) {
+        // down arrow
+		playerY++;
+    }
+	if (keyboardPressMap[37]) {
+        // left arrow
+        playerX--;
+
+    }
+	if (keyboardPressMap[39]) {
+        // right arrow
+		playerX++;		
+    }
+	render();
+
+}
+
+</script>
+</head>
+<body>
+</body>
+</html>
