@@ -13,6 +13,7 @@ var height=500;
 var playerR=5;
 var playerX= Math.floor((Math.random()*width)+1);
 var playerY= Math.floor((Math.random()*height)+1);
+var speed=3;
 var c=document.getElementById("myCanvas");
 var ctx=c.getContext("2d");
 ctx.beginPath();
@@ -45,24 +46,21 @@ document.onkeydown = function (e) {
 	
     if (keyboardPressMap[38]) {
         // up arrow
-		playerY--;
-
+		playerY-=speed;
     }
     if (keyboardPressMap[40]) {
         // down arrow
-		playerY++;
+		playerY+=speed;
     }
 	if (keyboardPressMap[37]) {
         // left arrow
-        playerX--;
-
+        playerX-=speed;
     }
 	if (keyboardPressMap[39]) {
         // right arrow
-		playerX++;		
+		playerX+=speed;		
     }
 	render();
-
 }
 
 </script>
